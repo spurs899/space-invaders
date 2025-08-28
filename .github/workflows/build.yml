@@ -34,6 +34,8 @@ jobs:
 
       - name: Install JS deps
         run: npm ci
+        env:
+          CI: true
 
       - name: Run JS unit tests
         run: npm test
