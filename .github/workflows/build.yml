@@ -15,6 +15,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Setup Node.js with npm 9 (needed for lockfileVersion: 3)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install JS deps
+        run: npm ci
+        env:
+          CI: true
+
+      - name: Run JS unit tests
+        run: npm test
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -26,20 +41,6 @@ jobs:
       - name: Build
         run: dotnet build SpaceInvaders.sln -c Release --no-restore
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install JS deps
-        run: npm ci
-        env:
-          CI: true
-
-      - name: Run JS unit tests
-        run: npm test
-
       - name: Publish Web (artifact)
         run: dotnet publish SpaceInvaders.Web/SpaceInvaders.Web.csproj -c Release -o out
 
@@ -48,6 +49,3 @@ jobs:
         with:
           name: SpaceInvaders.Web-publish
           path: out
-
-  # Optional: deploy to GitHub Pages for static content if we had pure static site.
-  # This app is an ASP.NET Core host; deployment strategy varies per target (Azure Web App, etc.)
