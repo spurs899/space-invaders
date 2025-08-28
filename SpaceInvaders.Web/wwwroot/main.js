@@ -54,7 +54,11 @@
 
   function makeBullet(x,y,vy, friendly){
     return { x, y, vy, friendly, dead:false,
-      update(dt){ this.y += this.vy*dt; if(this.y < -20 || this.y > H+20) this.dead = true; },
+      update(dt){
+        this.y += this.vy*dt;
+        // Consider bullet visual length (10px): use tip-aware bounds
+        if (this.friendly ? (this.y - 10 < -20) : (this.y + 10 > H + 20)) this.dead = true;
+      },
       draw(){ ctx.strokeStyle = friendly? '#9aff9a' : '#ff8080'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(this.x, this.y); ctx.lineTo(this.x, this.y + (friendly? -10:10)); ctx.stroke(); }
     };
   }

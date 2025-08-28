@@ -8,7 +8,11 @@ export function chance(p){ return Math.random() < p; }
 export function makeBulletFactory(H){
   return function makeBullet(x,y,vy, friendly){
     return { x, y, vy, friendly, dead:false,
-      update(dt){ this.y += this.vy*dt; if(this.y < -20 || this.y > H+20) this.dead = true; }
+      update(dt){
+        this.y += this.vy*dt;
+        // Consider bullet visual length (10px): check tip vs bounds
+        if (this.friendly ? (this.y - 10 < -20) : (this.y + 10 > H + 20)) this.dead = true;
+      }
     };
   }
 }
