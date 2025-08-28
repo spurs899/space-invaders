@@ -76,6 +76,14 @@ Adjust the runtime identifier (RID) and self-contained setting as needed.
 - Port already in use: ASP.NET Core may choose an alternate port. Use the exact URL printed in the console, or set `ASPNETCORE_URLS=http://localhost:5005` before running.
 - Blank page from file://: Some browsers block local script execution. Prefer running through the .NET host.
 
+## Contributing
+
+See CONTRIBUTING.md. Please also read CODE_OF_CONDUCT.md.
+
+## Security
+
+See SECURITY.md for how to report vulnerabilities.
+
 ## License
 
-If you’d like to include a license, add a LICENSE file at the repo root (MIT recommended for simplicity).
+This project is licensed under the MIT License — see the LICENSE file for details.
