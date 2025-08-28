@@ -69,6 +69,16 @@ If you don’t want to run the .NET host, you can:
 - Hosting: ASP.NET Core minimal API with static files middleware (UseDefaultFiles + UseStaticFiles)
 - Target framework: net9.0
 
+## Testing
+
+- JavaScript unit tests use Vitest.
+- Run locally:
+  - Install Node.js 20+.
+  - npm ci
+  - npm test
+
+CI runs these tests on every push/PR before building the .NET host.
+
 ## Build, Publish, Deploy
 
 - Build: `dotnet build`

@@ -11,3 +11,5 @@ riderModule.iml
 # JetBrains IDE project folder variants
 /.idea/indexLayout.xml
 /.idea/vcs.xml
+node_modules/
+# existing ignores below (if any)

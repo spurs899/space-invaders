@@ -26,6 +26,18 @@ jobs:
       - name: Build
         run: dotnet build SpaceInvaders.sln -c Release --no-restore
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install JS deps
+        run: npm ci
+
+      - name: Run JS unit tests
+        run: npm test
+
       - name: Publish Web (artifact)
         run: dotnet publish SpaceInvaders.Web/SpaceInvaders.Web.csproj -c Release -o out
 
