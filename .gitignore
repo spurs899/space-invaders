@@ -3,5 +3,11 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+# IDE-specific layout and VCS config files (root-level)
 /indexLayout.xml
 /vcs.xml
+
+# JetBrains IDE project folder variants
+/.idea/indexLayout.xml
+/.idea/vcs.xml
