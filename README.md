@@ -1,7 +1,8 @@
 # Stick Space Invaders (JavaScript) — .NET 9 Static Host
 
 <p align="left">
-  <a href="https://github.com/spurs899/space-invaders/actions"><img src="https://img.shields.io/github/actions/workflow/status/spurs899/space-invaders/build.yml?branch=main" alt="CI"></a>
+  <a href="https://github.com/spurs899/space-invaders/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/spurs899/space-invaders/build.yml?branch=main" alt="Build"></a>
+  <a href="https://github.com/spurs899/space-invaders/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/spurs899/space-invaders/build.yml?branch=main&label=tests" alt="Tests"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
   <img src="https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet&logoColor=white" alt=".NET 9.0">
   <img src="https://img.shields.io/badge/ASP.NET%20Core-Static%20Host-5C2D91?logo=dotnet" alt="ASP.NET Core Static Host">
