@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore
+        run: dotnet restore SpaceInvaders.sln
+
+      - name: Build
+        run: dotnet build SpaceInvaders.sln -c Release --no-restore
+
+      - name: Publish Web (artifact)
+        run: dotnet publish SpaceInvaders.Web/SpaceInvaders.Web.csproj -c Release -o out
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SpaceInvaders.Web-publish
+          path: out
+
+  # Optional: deploy to GitHub Pages for static content if we had pure static site.
+  # This app is an ASP.NET Core host; deployment strategy varies per target (Azure Web App, etc.)
