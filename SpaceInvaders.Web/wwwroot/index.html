@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stick Space Invaders</title>
+  <style>
+    html, body { height: 100%; margin: 0; background:#0b0f15; color:#e6f0ff; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    .wrap { display:flex; align-items:center; justify-content:center; height:100%; }
+    canvas { background:#03060a; border:1px solid #1f2a3a; image-rendering: pixelated; }
+    .hud { position: fixed; top: 8px; left: 50%; transform: translateX(-50%); display:flex; gap:24px; font-weight: 600; letter-spacing: .5px; text-shadow: 0 1px 0 #000; }
+    .btn { position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); background:#122033; color:#e6f0ff; border:1px solid #1f2a3a; padding:6px 10px; border-radius:6px; cursor:pointer; }
+    .btn:hover { background:#162940; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <canvas id="game" width="700" height="900" aria-label="Stick Space Invaders" role="img"></canvas>
+  </div>
+  <div class="hud">
+    <div id="score">Score: 0</div>
+    <div id="lives">Lives: 3</div>
+    <div id="wave">Wave: 1</div>
+  </div>
+  <button id="restart" class="btn" hidden>Restart</button>
+  <script src="main.js"></script>
+</body>
+</html>
