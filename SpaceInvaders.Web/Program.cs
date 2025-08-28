@@ -6,6 +6,7 @@ var app = builder.Build();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
+//Test endpoint
 app.MapGet("/health", () => Results.Ok("OK"));
 
 app.Run();
