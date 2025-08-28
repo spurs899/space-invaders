@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900">
+  <rect width="700" height="900" fill="#0b0f15"/>
+  <g fill="#0f1722">
+    <!-- star field -->
+    <rect x="50" y="60" width="2" height="2"/>
+    <rect x="120" y="140" width="2" height="2"/>
+    <rect x="200" y="90" width="2" height="2"/>
+    <rect x="320" y="30" width="2" height="2"/>
+    <rect x="500" y="120" width="2" height="2"/>
+    <rect x="620" y="80" width="2" height="2"/>
+    <rect x="640" y="210" width="2" height="2"/>
+    <rect x="430" y="200" width="2" height="2"/>
+    <rect x="90" y="260" width="2" height="2"/>
+    <rect x="260" y="300" width="2" height="2"/>
+    <rect x="360" y="260" width="2" height="2"/>
+    <rect x="560" y="260" width="2" height="2"/>
+  </g>
+  <!-- ground line -->
+  <path d="M 0 800 L 700 800" stroke="#1f2a3a" stroke-width="2" fill="none"/>
+
+  <!-- bunkers -->
+  <g stroke="#7da6d8" stroke-width="3" fill="none">
+    <g transform="translate(150,720)">
+      <path d="M -20 0 L 20 0 M -20 0 L -20 -20 M 0 0 L 0 -28 M 20 0 L 20 -20"/>
+    </g>
+    <g transform="translate(350,720)">
+      <path d="M -20 0 L 20 0 M -20 0 L -20 -20 M 0 0 L 0 -28 M 20 0 L 20 -20"/>
+    </g>
+    <g transform="translate(550,720)">
+      <path d="M -20 0 L 20 0 M -20 0 L -20 -20 M 0 0 L 0 -28 M 20 0 L 20 -20"/>
+    </g>
+  </g>
+
+  <!-- player ship -->
+  <g transform="translate(350,830)" stroke="#8bd0ff" stroke-width="3" fill="none">
+    <polygon points="0,-15 20,15 -20,15"/>
+    <line x1="0" y1="-15" x2="0" y2="-25"/>
+  </g>
+
+  <!-- enemies row -->
+  <g stroke-width="2.5" fill="none">
+    <g stroke="#ffd166" transform="translate(100,160)">
+      <rect x="-15" y="-12" width="30" height="24"/>
+      <path d="M -8 -2 L -4 -2 M 8 -2 L 4 -2"/>
+    </g>
+    <g stroke="#ffb4a2" transform="translate(200,160)">
+      <rect x="-15" y="-12" width="30" height="24"/>
+      <path d="M -8 -2 L -4 -2 M 8 -2 L 4 -2"/>
+    </g>
+    <g stroke="#a0c4ff" transform="translate(300,160)">
+      <rect x="-15" y="-12" width="30" height="24"/>
+      <path d="M -8 -2 L -4 -2 M 8 -2 L 4 -2"/>
+    </g>
+    <g stroke="#ffd166" transform="translate(400,160)">
+      <rect x="-15" y="-12" width="30" height="24"/>
+      <path d="M -8 -2 L -4 -2 M 8 -2 L 4 -2"/>
+    </g>
+    <g stroke="#ffb4a2" transform="translate(500,160)">
+      <rect x="-15" y="-12" width="30" height="24"/>
+      <path d="M -8 -2 L -4 -2 M 8 -2 L 4 -2"/>
+    </g>
+  </g>
+
+  <!-- player bullet -->
+  <g stroke="#9aff9a" stroke-width="2">
+    <path d="M 350 790 L 350 780"/>
+  </g>
+</svg>
