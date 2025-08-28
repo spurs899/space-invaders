@@ -1,5 +1,15 @@
 # Stick Space Invaders (JavaScript) — .NET 9 Static Host
 
+<p align="left">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+  <img src="https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet&logoColor=white" alt=".NET 9.0">
+  <img src="https://img.shields.io/badge/ASP.NET%20Core-Static%20Host-5C2D91?logo=dotnet" alt="ASP.NET Core Static Host">
+  <img src="https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?logo=javascript&logoColor=black" alt="Vanilla JS"></img>
+  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome"></a>
+  <a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/Code%20of%20Conduct-Contributor%20Covenant-0e75b6.svg" alt="Code of Conduct"></a>
+  <a href="SECURITY.md"><img src="https://img.shields.io/badge/Security-Policy-informational.svg" alt="Security Policy"></a>
+</p>
+
 A minimal Space Invaders–style game rendered with stick geometry on an HTML5 canvas. The game is written in plain JavaScript with zero dependencies and is hosted by a minimal ASP.NET Core app (net9.0) that serves the static files from wwwroot.
 
 ![Gameplay screenshot](SpaceInvaders.Web/assets/screenshot.svg)
