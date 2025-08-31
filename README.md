@@ -1,4 +1,4 @@
-# Stick Space Invaders (JavaScript) — .NET 9 Static Host
+# Stick Arcade (Space Invaders + Asteroids) — .NET 9 Static Host
 
 <p align="left">
   <a href="https://github.com/spurs899/space-invaders/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/spurs899/space-invaders/build.yml?branch=main" alt="Build"></a>
@@ -25,6 +25,13 @@ A minimal Space Invaders–style game rendered with stick geometry on an HTML5 c
   - wwwroot/
     - index.html — game page
     - main.js — game logic
+- Asteroids.Web/ — New ASP.NET Core minimal app (net9.0) hosting a stick-graphics Asteroids game in the same style
+  - Program.cs — minimal hosting pipeline with static files
+  - Asteroids.Web.csproj — project file
+  - wwwroot/
+    - index.html — game page
+    - main.js — game logic
+    - gameExports.js — pure helpers/entities for unit tests
 - index.html, main.js — copies of the same game at repo root (can be opened directly in a browser if you prefer; the Web project serves the copies under wwwroot)
 
 ## Requirements
@@ -34,21 +41,22 @@ A minimal Space Invaders–style game rendered with stick geometry on an HTML5 c
 - Any modern browser (for playing the game)
 - Optional: JetBrains Rider / Visual Studio 2022 for running/debugging the web app
 
-## Run the game (via .NET host)
+## Run the games (via .NET host)
 
 From the repository root:
 
 1) Restore and build (optional; run will build automatically):
    - `dotnet build`
 
-2) Run the ASP.NET Core app:
-   - `dotnet run --project SpaceInvaders.Web`
+2) Run one of the ASP.NET Core apps:
+   - Space Invaders: `dotnet run --project SpaceInvaders.Web`
+   - Asteroids: `dotnet run --project Asteroids.Web`
 
 3) Open your browser:
    - Navigate to the URL printed in the console, typically `http://localhost:5000` (or `https://localhost:5001`).
    - Health check endpoint: `http://localhost:5000/health` should return `OK`.
 
-The app serves index.html by default and static assets from SpaceInvaders.Web/wwwroot.
+Each app serves index.html by default and static assets from its own wwwroot directory.
 
 ## Alternative: Open the static files directly
 
@@ -56,12 +64,20 @@ If you don’t want to run the .NET host, you can:
 - Open SpaceInvaders.Web/wwwroot/index.html directly in your browser, or
 - Open the root-level index.html (duplicate). Note that some browsers restrict local file access; for the best experience use the .NET host above or a simple static server.
 
-## Gameplay & Controls
+## Gameplay & Controls (high level)
 
+Space Invaders:
 - Move: Left/Right Arrow or A/D
 - Shoot: Spacebar
 - Restart after game over: Click the Restart button or press R
-- Goal: Clear waves of stick-geometry invaders. Watch out for enemy shots and protect yourself behind the stick bunkers.
+- Goal: Clear waves of stick-geometry invaders. Watch out for enemy shots and use the stick bunkers.
+
+Asteroids:
+- Rotate: Left/Right Arrow or A/D
+- Thrust: Up Arrow or W
+- Shoot: Spacebar
+- Restart after game over: Click Restart or press R
+- Goal: Clear all asteroids; larger rocks split into smaller ones.
 
 ## Tech Notes
 
@@ -73,10 +89,15 @@ If you don’t want to run the .NET host, you can:
 ## Testing
 
 - JavaScript unit tests use Vitest.
+- Added tests for both Space Invaders utilities and the new Asteroids project.
 - Run locally:
   - Install Node.js 20+.
   - npm ci
   - npm test
+
+Test files:
+- tests/game.test.js — exercises SpaceInvaders.Web/wwwroot/gameExports.js
+- tests/asteroids.test.js — exercises Asteroids.Web/wwwroot/gameExports.js
 
 CI runs these tests on every push/PR before building the .NET host.
 

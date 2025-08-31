@@ -121,13 +121,14 @@
   }
 
   // Game containers
-  let player, bullets, enemies, blocks, enemyDir, enemyStepY, enemySpeedX, enemyShootRate, score, wave, time, gameOver;
+  let player, bullets, enemies, blocks, effects, enemyDir, enemyStepY, enemySpeedX, enemyShootRate, score, wave, time, gameOver;
 
   function reset(){
     player = makePlayer();
     bullets = [];
     enemies = [];
     blocks = [];
+    effects = [];
     enemyDir = 1;
     enemyStepY = 22;
     enemySpeedX = 60;
@@ -191,6 +192,16 @@
     return Math.abs(a.x-b.x) < (a.w/2 + b.w/2) && Math.abs(a.y-b.y) < (a.h/2 + b.h/2);
   }
 
+  function makeBurst(x,y,color,count=12,speed=180,life=0.5){
+    for(let i=0;i<count;i++){
+      const ang = rand(0, Math.PI*2);
+      effects.push({x,y, vx:Math.cos(ang)*speed*rand(0.6,1.2), vy:Math.sin(ang)*speed*rand(0.6,1.2), life, max:life, color,
+        update(dt){ this.life-=dt; this.x+=this.vx*dt; this.y+=this.vy*dt; this.vx*=0.98; this.vy*=0.98; },
+        draw(){ if(this.life<=0) return; const a = Math.max(0, this.life/this.max); ctx.strokeStyle = color; ctx.globalAlpha = a; ctx.beginPath(); ctx.moveTo(this.x, this.y); ctx.lineTo(this.x - this.vx*0.03, this.y - this.vy*0.03); ctx.stroke(); ctx.globalAlpha = 1; }
+      });
+    }
+  }
+
   function update(dt){
     time += dt;
     if(gameOver){ return; }
@@ -225,13 +236,17 @@
     // Bullets
     for(const b of bullets){ b.update(dt); }
 
+    // Effects
+    for(const fx of effects){ fx.update(dt); }
+    effects = effects.filter(fx=>fx.life>0);
+
     // Collisions: bullets vs enemies
     for(const b of bullets){
       if(b.dead || !b.friendly) continue;
       for(const e of enemies){
         if(e.dead) continue;
         if(lineHitRect(b.x, b.y, b.x, b.y-10, e.x-e.w/2, e.y-e.h/2, e.w, e.h)){
-          e.dead = true; b.dead = true; score += e.score; break;
+          e.dead = true; b.dead = true; score += e.score; makeBurst(e.x, e.y, '#ffd166', 16, 220, 0.6); break;
         }
       }
     }
@@ -241,7 +256,7 @@
       for(const b of bullets){
         if(b.dead || b.friendly) continue;
         if(lineHitRect(b.x, b.y, b.x, b.y+10, player.x-20, player.y-20, 40,40)){
-          b.dead = true; player.lives--; player.inv = 1.2;
+          b.dead = true; makeBurst(player.x, player.y, '#ff8080', 20, 260, 0.7); player.lives--; player.inv = 1.2;
           if(player.lives<=0){ gameOver = true; HUD.restart.hidden = false; }
           break;
         }
@@ -252,7 +267,7 @@
     for(const b of bullets){ if(b.dead) continue; for(const bl of blocks){
       // simple AABB around bunker
       if(lineHitRect(b.x,b.y, b.x, b.y+(b.friendly?-10:10), bl.x-24, bl.y-32, 48, 36)){
-        b.dead = true; bl.hit(); break;
+        b.dead = true; bl.hit(); makeBurst(b.x, b.y, '#7da6d8', 10, 180, 0.4); break;
       }
     }}
 
@@ -288,6 +303,8 @@
     for(const bl of blocks){ bl.draw(); }
     for(const e of enemies){ if(!e.dead) e.draw(); }
     for(const b of bullets){ b.draw(); }
+    // effects on top of bullets but below player for visibility
+    for(const fx of effects){ fx.draw(); }
     player.draw();
 
     if(gameOver){
