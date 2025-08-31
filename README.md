@@ -14,7 +14,9 @@
 
 A minimal Space Invaders–style game rendered with stick geometry on an HTML5 canvas. The game is written in plain JavaScript with zero dependencies and is hosted by a minimal ASP.NET Core app (net9.0) that serves the static files from wwwroot.
 
-![Gameplay screenshot](SpaceInvaders.Web/assets/screenshot.svg)
+![Space Invaders screenshot](SpaceInvaders.Web/assets/screenshot.svg)
+
+![Asteroids screenshot](Asteroids.Web/assets/screenshot.svg)
 
 ## Project Layout
 

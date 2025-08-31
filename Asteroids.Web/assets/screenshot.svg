@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+  <rect fill="#03060a" x="0" y="0" width="700" height="900" />
+  <!-- star field -->
+  <g fill="#0f1722">
+    <rect x="20" y="40" width="2" height="2"/>
+    <rect x="110" y="120" width="2" height="2"/>
+    <rect x="180" y="300" width="2" height="2"/>
+    <rect x="260" y="80" width="2" height="2"/>
+    <rect x="320" y="210" width="2" height="2"/>
+    <rect x="380" y="30" width="2" height="2"/>
+    <rect x="420" y="260" width="2" height="2"/>
+    <rect x="500" y="150" width="2" height="2"/>
+    <rect x="560" y="340" width="2" height="2"/>
+    <rect x="630" y="90" width="2" height="2"/>
+  </g>
+
+  <!-- rocks (stick polygons) -->
+  <g fill="none" stroke="#a0c4ff" stroke-width="2.5" filter="url(#shadow)">
+    <polygon points="120,180 150,170 175,185 168,210 140,220 112,205" />
+    <polygon points="520,260 548,246 572,260 582,288 560,306 530,296 512,278" />
+    <polygon points="330,420 352,412 374,424 370,446 346,456 322,444" />
+  </g>
+
+  <!-- ship (stick outline) -->
+  <g fill="none" stroke="#8bd0ff" stroke-width="2.5" transform="translate(350,450) rotate(-90)">
+    <polyline points="16,0 -12,10 -6,0 -12,-10 16,0" />
+    <line x1="-12" y1="0" x2="-18" y2="0" stroke="#ffd166" />
+  </g>
+
+  <!-- bullets -->
+  <g stroke="#9aff9a" stroke-width="2">
+    <line x1="380" y1="450" x2="368" y2="450" />
+    <line x1="410" y1="430" x2="398" y2="430" />
+  </g>
+
+  <!-- HUD text -->
+  <g fill="#e6f0ff" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-weight="600">
+    <text x="350" y="30" text-anchor="middle" font-size="18">Score: 1200   Lives: 2   Level: 3</text>
+  </g>
+
+  <!-- title overlay for README clarity -->
+  <g fill="#e6f0ff" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+    <text x="350" y="860" text-anchor="middle" font-size="20" opacity="0.8">Stick Asteroids</text>
+  </g>
+</svg>
